@@ -1,0 +1,28 @@
+{
+  "name": "solemate-kick-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot for SoleMate Kick — Inventory, Orders & Deliveries, backed by Google Sheets",
+  "main": "src/bot.js",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/dev-polling.js",
+    "authorize-google": "node scripts/authorizeGoogle.js",
+    "setup-sheet": "node scripts/setupSheet.js",
+    "setup-dashboard": "node scripts/setupDashboard.js",
+    "setup-feedback-form": "node scripts/setupFeedbackForm.js",
+    "set-webhook": "node scripts/setWebhook.js",
+    "delete-webhook": "node scripts/setWebhook.js --delete"
+  },
+  "dependencies": {
+    "googleapis": "^140.0.1",
+    "pdfkit": "^0.20.2",
+    "telegraf": "^4.16.3"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
