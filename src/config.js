@@ -31,8 +31,6 @@ const config = {
   googleOAuthClientSecret: required('GOOGLE_OAUTH_CLIENT_SECRET'),
   googleOAuthRefreshToken: required('GOOGLE_OAUTH_REFRESH_TOKEN'),
 
-  webhookSecretPath: process.env.WEBHOOK_SECRET_PATH || '',
-  publicUrl: process.env.PUBLIC_URL || '',
 
   countryCallingCode: process.env.COUNTRY_CALLING_CODE || '975',
   businessName: process.env.BUSINESS_NAME || 'SoleMate Kick',

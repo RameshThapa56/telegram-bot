@@ -1,8 +1,6 @@
 // The bot's composition root: builds one Telegraf instance with auth,
 // persistent sessions, scenes, and the main-menu button handlers wired in.
-// Both the local dev entry point (scripts/dev-polling.js) and the production
-// webhook handler (api/webhook.js) import and reuse this same `bot` object —
-// only how updates reach it differs (long-polling vs. a webhook call).
+// Both the dev and prod runs use the entry point scripts/dev-polling.js (`npm run dev` / `npm run start:prod`).
 
 const { Telegraf, Scenes, session } = require('telegraf');
 const config = require('./config');

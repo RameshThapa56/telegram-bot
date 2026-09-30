@@ -10,6 +10,14 @@ const root = path.join(__dirname, '..', '..');
 const named = path.join(root, `.env.${APP_ENV}`);
 const ENV_PATH = fs.existsSync(named) || APP_ENV !== 'dev' ? named : path.join(root, '.env');
 
+// On a host like Render there is no env file: variables come from the
+// dashboard and are already in process.env, so just skip loading one.
+if (!fs.existsSync(ENV_PATH) && process.env.BOT_TOKEN) {
+  console.log(`[env] APP_ENV=${APP_ENV} -> using host environment variables`);
+  module.exports = { APP_ENV, ENV_PATH };
+  return;
+}
+
 if (!fs.existsSync(ENV_PATH)) {
   console.error(`Env file not found: ${ENV_PATH}\nCreate it from .env.example (APP_ENV=${APP_ENV}).`);
   process.exit(1);

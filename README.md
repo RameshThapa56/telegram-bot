@@ -238,45 +238,24 @@ self-cleaning table: rows just get overwritten as people use the bot.
 
 ---
 
-## 6. Deploying (Vercel, no always-on server)
+## 6. Running in production
 
-We deploy as a **webhook**: Telegram calls your URL whenever there's a new
-message, and the function spins down when idle — you're not paying for or
-maintaining a server that runs 24/7.
+The bot runs by **long-polling** (no public URL, no webhook, no Vercel). Run
+it on any machine or server that stays on:
 
-1. Install the Vercel CLI and log in:
-   ```bash
-   npm i -g vercel
-   vercel login
-   ```
-2. From the project folder:
-   ```bash
-   vercel
-   ```
-   Follow the prompts (link/create a project). This deploys once so you get
-   a URL, e.g. `https://solemate-kick-bot.vercel.app`.
-3. In the Vercel dashboard for this project, go to *Settings → Environment
-   Variables* and add **every** variable from your `.env` file (same names,
-   same values). Set `PUBLIC_URL` to the URL from step 2.
-4. Redeploy so the env vars take effect:
-   ```bash
-   vercel --prod
-   ```
-5. Point Telegram at your webhook:
-   ```bash
-   npm run set-webhook
-   ```
-   You should see `✅ Webhook set to: https://.../api/webhook?secret=...`.
+```
+npm install
+npm run start:prod   # uses .env.prod
+```
 
-Your bot is now live with no server to manage. To go back to local testing
-later, run `npm run delete-webhook` first (Telegram only allows one active
-mode — webhook *or* polling — at a time), then `npm run dev`.
+Use `npm run dev` locally (uses `.env.dev`). Keep it alive on a server with a
+process manager such as `pm2 start "npm run start:prod" --name solemate-bot`.
+Sessions live in the Sheet, so restarts lose nothing.
 
-**Redeploying after code changes:** `vercel --prod` is all you need —
-`PUBLIC_URL` doesn't change between deploys, so you don't need to re-run
-`set-webhook` unless the URL itself changes (e.g. you rename the project).
+If the bot token was ever used with a webhook, the first `launch()` clears it
+automatically. Don't run dev and prod against the same bot token at the same
+time (Telegram allows only one poller per bot).
 
----
 
 ## 7. Using the bot day-to-day
 

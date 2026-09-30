@@ -8,17 +8,15 @@
   "scripts": {
     "dev": "node scripts/dev-polling.js",
     "authorize-google": "node scripts/authorizeGoogle.js",
-    "dev:prod": "APP_ENV=prod node scripts/dev-polling.js",
+    "start": "node scripts/dev-polling.js",
+    "start:prod": "APP_ENV=prod node scripts/dev-polling.js",
     "authorize-google:prod": "APP_ENV=prod node scripts/authorizeGoogle.js",
     "setup-sheet:prod": "APP_ENV=prod node scripts/setupSheet.js",
     "setup-dashboard:prod": "APP_ENV=prod node scripts/setupDashboard.js",
     "setup-feedback-form:prod": "APP_ENV=prod node scripts/setupFeedbackForm.js",
-    "set-webhook:prod": "APP_ENV=prod node scripts/setWebhook.js",
     "setup-sheet": "node scripts/setupSheet.js",
     "setup-dashboard": "node scripts/setupDashboard.js",
-    "setup-feedback-form": "node scripts/setupFeedbackForm.js",
-    "set-webhook": "node scripts/setWebhook.js",
-    "delete-webhook": "node scripts/setWebhook.js --delete"
+    "setup-feedback-form": "node scripts/setupFeedbackForm.js"
   },
   "dependencies": {
     "googleapis": "^140.0.1",
