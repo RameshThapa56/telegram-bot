@@ -3,7 +3,7 @@
 // perfect for testing on your laptop. Run with: npm run dev
 // (Never used in production — Vercel uses api/webhook.js instead.)
 
-require('dotenv').config();
+require('./lib/loadEnv');
 const bot = require('../src/bot');
 
 bot.launch().then(() => {

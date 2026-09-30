@@ -9,7 +9,7 @@
 // as the OAuth consent screen is set to "In production" — see README §3.4).
 // You only ever do this once per Google account.
 
-require('dotenv').config();
+const { ENV_PATH } = require('./lib/loadEnv');
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -17,7 +17,6 @@ const { google } = require('googleapis');
 
 const PORT = 53682; // arbitrary local port, only used during this one-time flow
 const REDIRECT_URI = `http://localhost:${PORT}/oauth2callback`;
-const ENV_PATH = path.join(__dirname, '..', '.env');
 
 const clientId = process.env.GOOGLE_OAUTH_CLIENT_ID;
 const clientSecret = process.env.GOOGLE_OAUTH_CLIENT_SECRET;

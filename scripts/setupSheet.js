@@ -9,7 +9,7 @@
 // tabs that already exist but always refreshes headers/styling.
 // Run with: npm run setup-sheet
 
-require('dotenv').config();
+require('./lib/loadEnv');
 const { google } = require('googleapis');
 const config = require('../src/config');
 

@@ -40,7 +40,7 @@
 //     ("2026-09-03T10:47:09.695Z" or plain "2026-09-02"); LEFT(...,10) +
 //     DATEVALUE reads the YYYY-MM-DD prefix regardless of which shape it's in.
 
-require('dotenv').config();
+require('./lib/loadEnv');
 const { google } = require('googleapis');
 const config = require('../src/config');
 

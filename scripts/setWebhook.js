@@ -3,7 +3,7 @@
 // Run `npm run delete-webhook` to switch back to local long-polling testing
 // (Telegram only allows ONE active method — webhook OR polling — at a time).
 
-require('dotenv').config();
+require('./lib/loadEnv');
 const { Telegraf } = require('telegraf');
 const config = require('../src/config');
 

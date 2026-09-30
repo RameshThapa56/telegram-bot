@@ -20,7 +20,7 @@
 // script prints the exact next step (with the right spreadsheet link) at
 // the end.
 
-require('dotenv').config();
+const { ENV_PATH } = require('./lib/loadEnv');
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
@@ -28,7 +28,6 @@ const { google } = require('googleapis');
 const config = require('../src/config');
 const { getPrefillEntryId } = require('./lib/formPrefillEntry');
 
-const ENV_PATH = path.join(__dirname, '..', '.env');
 
 async function confirm(question) {
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
